@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COS - Cart</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #000;
+    }
+    header, footer {
+      width: 100%;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid #ccc;
+    }
+    header a {
+      text-decoration: none;
+      color: #000;
+      font-size: 13px;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      cursor: pointer;
+    }
+    .cart-wrapper {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #000;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .cart-header a {
+      color: #000;
+    }
+    .cart-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .cart-left {
+      flex: 0 0 60%;
+    }
+    .cart-right {
+      flex: 0 0 35%;
+      border: 1px solid #ccc;
+      padding: 20px;
+      font-size: 15px;
+    }
+    .cart-item {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 15px;
+      align-items: flex-end;
+    }
+    .cart-item img {
+      width: 140px;
+      height: auto;
+      object-fit: cover;
+    }
+    .cart-details {
+      flex: 1;
+      padding-left: 20px;
+    }
+    .cart-details h4 {
+      margin: 0 0 5px;
+      font-size: 15px;
+    }
+    .summary p {
+      display: flex;
+      justify-content: space-between;
+      margin: 6px 0;
+    }
+    .summary p.total {
+      font-weight: bold;
+    }
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      text-align: center; 
+      margin-top: 10px;
+      text-decoration: none;
+    }
+    .checkout-btn:hover {
+  background-color: #333;
+}
+    .quantity-controls {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .quantity-controls button {
+      padding: 6px 12px;
+      font-size: 14px;
+      background-color: #fff;
+      border: 1px solid #000;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .quantity-controls button:hover {
+      background-color: #000;
+      color: #fff;
+    }
+    .quantity-controls input {
+      width: 40px;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 5px 0;
+    }
+    .remove-btn {
+      background: none;
+      border: none;
+      color: red;
+      margin-left: 15px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: color 0.2s;
+    }
+    .remove-btn:hover {
+      color: darkred;
+    }
+    .free-shipping-bar {
+      margin-bottom: 20px;
+      border: 1px solid #000;
+      padding: 10px;
+    }
+    .free-shipping-bar p {
+      margin: 0 0 10px;
+      font-size: 14px;
+    }
+    .progress-container {
+      width: 100%;
+      height: 8px;
+      background: #ccc;
+    }
+    .progress-bar {
+      height: 8px;
+      background: #000;
+      width: 0%;
+    }
+    footer {
+      background: #111;
+      color: #fff;
+      padding: 40px 30px;
+      font-size: 14px;
+    }
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .footer-grid div {
+      min-width: 150px;
+    }
+    .footer-grid h4 {
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+    .footer-grid ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-grid ul li {
+      margin-bottom: 5px;
+    }
+    .footer-grid ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .footer-bottom {
+      margin-top: 30px;
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="products.html">&lt; BACK</a>
+    <div class="logo" onclick="window.location.href='home.html'">COS</div>
+    <a href="#">SHIP TO &gt; VIETNAM</a>
+  </header>
+
+  <div class="cart-wrapper">
+    <div class="cart-header">
+      <div>SHOPPING BAG (<span id="item-count">0</span>)</div>
+      <div><a href="#">WISHLIST</a></div>
+    </div>
+    <div class="cart-container">
+      <div class="cart-left" id="cart-items">
+        <p>Không có sản phẩm nào trong giỏ hàng.</p>
+      </div>
+      <div class="cart-right">
+        <div class="free-shipping-bar">
+          <p id="shipping-msg">You are $150000 away from free shipping</p>
+          <div class="progress-container">
+            <div id="progress-bar" class="progress-bar"></div>
+          </div>
+        </div>
+        <h4>GIÁ SẢN PHẨM</h4>
+        <div class="summary">
+          <p><span>SẢN PHẨM</span><span id="product-total">0 VND</span></p>
+          <p><span>VẬN CHUYỂN</span><span id="shipping-fee">50.000 VND</span></p>
+          <p class="total"><span>TỔNG CỘNG</span><span id="grand-total">50.000 VND</span></p>
+        </div>      
+        <a href="checkout.html" class="checkout-btn">GO TO CHECK OUT</a>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">COS</div>
+    <hr class="footer-line" />
+    <div class="footer-content">
+      <div class="footer-col"><h4>The company</h4><p>About</p><p>Features</p><p>Design and Craft</p><p>Pinterest</p></div>
+      <div class="footer-col"><h4>Assistance</h4><p>Contact us</p><p>Payments</p><p>FAQ</p></div>
+      <div class="footer-col"><h4>Legal</h4><p>Privacy policy</p><p>Cookie notice</p><p>Cookie settings</p></div>
+      <div class="footer-col"><h4>Follow us</h4><p>Facebook</p><p>Instagram</p><p>Tiktok</p></div>
+    </div>
+    <div class="footer-bottom"><p>COS</p><p>SHIPPING TO > VIETNAM (ENGLISH)</p></div>
+  </footer>
+
+  <script>
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function formatCurrency(num) {
+      return num.toLocaleString("vi-VN") + " VND";
+    }
+
+    function updateTotals() {
+      let total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      let shipping = total >= 1500000 ? 0 : 50000;
+
+      document.getElementById("product-total").textContent = formatCurrency(total);
+      document.getElementById("shipping-fee").textContent = formatCurrency(shipping);
+      document.getElementById("grand-total").textContent = formatCurrency(total + shipping);
+      document.getElementById("item-count").textContent = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+      let remain = 1500000 - total;
+      let progress = Math.min((total / 1500000) * 100, 100);
+      document.getElementById("shipping-msg").textContent =
+        remain > 0 ? `Bạn cần mua thêm ${formatCurrency(remain)} để được miễn phí vận chuyển.` : "Bạn đã được miễn phí vận chuyển!";
+      document.getElementById("progress-bar").style.width = progress + "%";
+    }
+
+    function renderCart() {
+      const cartContainer = document.getElementById("cart-items");
+      cartContainer.innerHTML = "";
+      if (cartItems.length === 0) {
+        cartContainer.innerHTML = "<p>Không có sản phẩm nào trong giỏ hàng.</p>";
+        updateTotals();
+        return;
+      }
+      cartItems.forEach((item, index) => {
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div class="cart-details">
+            <h4>${item.name}</h4>
+            <p>${formatCurrency(item.price)}</p>
+            <div class="quantity-controls">
+              <button onclick="decreaseQty(${index})">-</button>
+              <input type="text" value="${item.quantity}" readonly>
+              <button onclick="increaseQty(${index})">+</button>
+              <button class="remove-btn" onclick="removeItem(${index})">X</button>
+            </div>
+          </div>`;
+        cartContainer.appendChild(div);
+      });
+      updateTotals();
+    }
+
+    function increaseQty(index) {
+      cartItems[index].quantity++;
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+      renderCart();
+    }
+
+    function decreaseQty(index) {
+      if (cartItems[index].quantity > 1) {
+        cartItems[index].quantity--;
+        localStorage.setItem("cart", JSON.stringify(cartItems));
+        renderCart();
+      }
+    }
+
+    function removeItem(index) {
+      cartItems.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+      renderCart();
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>

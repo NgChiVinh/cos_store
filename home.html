@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>COS Homepage</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<script>
+  // Khi tải trang, hiển thị số sản phẩm trong giỏ
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const count = cart.length;
+    const countEl = document.querySelector(".cart-count");
+    if (countEl) countEl.textContent = count;
+  }
+
+  document.addEventListener("DOMContentLoaded", updateCartCount);
+</script>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-left">
+        <a href="#">Women</a>
+        <a href="#"><b>Men</b></a>
+      </div>
+      <div class="logo">COS</div>
+<div class="nav-right">
+  <i class='bx bx-search' id="search-icon" style="font-size: 22px;"></i>
+  <i class='bx bx-user' style="font-size: 22px;"></i>
+  <i class='bx bx-heart' style="font-size: 22px;"></i>
+
+  <a href="cart.html" class="cart-icon" style="position: relative; text-decoration: none;">
+    <i class='bx bx-shopping-bag' style="font-size: 22px; color: black;"></i>
+    <span class="cart-count" style="
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background-color: red;
+      color: white;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 50%;
+    ">0</span>
+  </a>
+
+  <span class="lang">EN/VN</span>
+</div>
+
+
+    </nav>
+  </header>
+
+  <!-- Banner -->
+  <div class="banner">
+    <img src="images/banner.jpg" alt="Banner">
+    <div class="banner-text">
+      <h2>SALE</h2>
+      <p>FURTHER REDUCTIONS<br>UP TO 50% OFF</p>
+      <a href="products.html" class="banner-btn">Shop now</a>
+
+    </div>
+  </div>
+
+  <!-- Products -->
+  <section class="products">
+    <div class="product">
+      <img src="images/shirt1.jpg" alt="Shirt" />
+      <span>Shirt</span>
+    </div>
+    <div class="product">
+      <img src="images/shirt2.jpg" alt="Shirt" />
+      <span>Shirt</span>
+    </div>
+    <div class="product">
+      <img src="images/linen1.jpg" alt="Linen Pants" />
+      <span>Linen Pants</span>
+    </div>
+    <div class="product">
+      <img src="images/pant.jpg" alt="Pants" />
+      <span>Pants</span>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">COS</div>
+    <hr class="footer-line" />
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>The company</h4>
+        <p>About</p>
+        <p>Features</p>
+        <p>Design and Craft</p>
+        <p>Pinterest</p>
+      </div>
+      <div class="footer-col">
+        <h4>Assistance</h4>
+        <p>Contact us</p>
+        <p>Payments</p>
+        <p>FAQ</p>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <p>Privacy policy</p>
+        <p>Cookie notice</p>
+        <p>Cookie settings</p>
+      </div>
+      <div class="footer-col">
+        <h4>Follow us</h4>
+        <p>Facebook</p>
+        <p>Instagram</p>
+        <p>Tiktok</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>COS</p>
+      <p>SHIPPING TO > VIETNAM (ENGLISH)</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COS - Checkout</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #000;
+    }
+    .navbar {
+      background-color: #fff;
+      padding: 16px 20px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+    }
+    .navbar a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .navbar .back-link {
+      flex: 1;
+    }
+    .navbar .brand {
+      flex: 1;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .navbar .brand a {
+      color: #000;
+      text-decoration: none;
+    }
+    .navbar .cart-link {
+      flex: 1;
+      text-align: right;
+    }
+    .checkout-wrapper {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    form label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: bold;
+    }
+    form input[type="text"],
+    form input[type="tel"],
+    form input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .payment-methods {
+      margin-top: 20px;
+    }
+    .payment-methods div {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+    }
+    .payment-methods input[type="radio"] {
+      margin-right: 10px;
+    }
+    .payment-details {
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #f9f9f9;
+    }
+    .submit-btn {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      text-align: center;
+    }
+    .cart-items {
+      margin-top: 30px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #f1f1f1;
+    }
+    .cart-items h3 {
+      margin-top: 0;
+    }
+    .cart-item {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .cart-item img {
+      width: 80px;
+      height: auto;
+      border: 1px solid #ccc;
+    }
+    .popup-success {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 24px 32px;
+      text-align: center;
+      z-index: 1000;
+      display: none;
+    }
+    .popup-success h3 {
+      margin: 0 0 10px;
+      color: #28a745;
+    }
+    .popup-success button {
+      margin-top: 16px;
+      padding: 10px 20px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .cart-total {
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: right;
+}
+
+.submit-btn:hover {
+  background-color: #333;
+  transition: 0.3s;
+}
+
+.popup-success {
+  animation: popup-fade 0.4s ease;
+}
+
+@keyframes popup-fade {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="back-link"><a href="/cart.html">&lt; VIEW SHOPPING BAG</a></div>
+    <div class="brand"><a href="/home.html">COS</a></div>
+    <div class="cart-link"></div>
+  </div>
+
+  <div class="checkout-wrapper">
+    <h2>Thông tin thanh toán</h2>
+
+    <div class="cart-items" id="cart-items">
+      <h3>Đơn hàng của bạn</h3>
+      <div id="cart-list"></div>
+    </div>
+
+    <form id="checkout-form">
+      <label for="name">Họ và tên</label>
+      <input type="text" id="name" required>
+
+      <label for="phone">Số điện thoại</label>
+      <input type="tel" id="phone" required>
+
+      <label for="email">Email (tuỳ chọn)</label>
+      <input type="email" id="email">
+
+      <label for="address">Địa chỉ (số nhà, tên đường...)</label>
+      <input type="text" id="address" required>
+
+      <label for="city">Thành phố / Tỉnh</label>
+      <input type="text" id="city" required>
+
+      <label for="note">Ghi chú (tuỳ chọn)</label>
+      <input type="text" id="note">
+
+      <div class="payment-methods">
+        <label>Phương thức thanh toán</label>
+        <div>
+          <input type="radio" name="payment" id="cod" value="cod" checked>
+          <label for="cod">Thanh toán khi nhận hàng (COD)</label>
+        </div>
+        <div>
+          <input type="radio" name="payment" id="bank" value="bank">
+          <label for="bank">Chuyển khoản ngân hàng</label>
+        </div>
+      </div>
+
+      <div class="payment-details" id="bank-details"></div>
+
+      <button type="submit" class="submit-btn">Xác nhận thanh toán</button>
+    </form>
+  </div>
+
+  <div id="popup" class="popup-success">
+    <h3>Đặt hàng thành công!</h3>
+    <p>Cảm ơn bạn đã mua hàng tại COS.</p>
+    <button onclick="closePopup()">Về trang chủ</button>
+  </div>
+
+  <script>
+    const codRadio = document.getElementById('cod');
+    const bankRadio = document.getElementById('bank');
+    const bankDetails = document.getElementById('bank-details');
+
+    const bankInfo = {
+      name: "Nguyễn Văn A",
+      number: "0123456789",
+      bank: "Vietcombank - CN TP.HCM",
+      note: "Họ tên + Số điện thoại"
+    };
+
+    function togglePaymentDetails() {
+      if (bankRadio.checked) {
+        bankDetails.style.display = 'block';
+        bankDetails.innerHTML = `
+          <p><strong>Thông tin chuyển khoản:</strong></p>
+          <p>Tên tài khoản: ${bankInfo.name}</p>
+          <p>Số tài khoản: ${bankInfo.number}</p>
+          <p>Ngân hàng: ${bankInfo.bank}</p>
+          <p><em>Nội dung chuyển khoản: ${bankInfo.note}</em></p>
+        `;
+      } else {
+        bankDetails.style.display = 'none';
+        bankDetails.innerHTML = '';
+      }
+    }
+
+    codRadio.addEventListener('change', togglePaymentDetails);
+    bankRadio.addEventListener('change', togglePaymentDetails);
+    togglePaymentDetails();
+
+    document.getElementById('checkout-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      localStorage.removeItem("cart");
+      document.getElementById('popup').style.display = 'block';
+    });
+
+    function closePopup() {
+      window.location.href = "/home.html";
+    }
+
+    const cartList = document.getElementById("cart-list");
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let total = 0;
+
+if (cart.length === 0) {
+  cartList.innerHTML = '<p>Giỏ hàng trống.</p>';
+} else {
+  cart.forEach(item => {
+    const itemDiv = document.createElement("div");
+    itemDiv.className = "cart-item";
+    const price = Number(item.price);
+    const subtotal = price * item.quantity;
+    total += subtotal;
+
+    itemDiv.innerHTML = `
+      <img src="${item.image}" alt="${item.name}" />
+      <div>
+        <p><strong>${item.name}</strong></p>
+        <p>Giá: ${price.toLocaleString('vi-VN')} đ</p>
+        <p>Số lượng: ${item.quantity}</p>
+        <p><em>Tạm tính: ${subtotal.toLocaleString('vi-VN')} đ</em></p>
+      </div>
+    `;
+    cartList.appendChild(itemDiv);
+  });
+
+  const totalDiv = document.createElement("div");
+  totalDiv.className = "cart-total";
+  totalDiv.innerHTML = `Tổng cộng: <strong>${total.toLocaleString('vi-VN')} đ</strong>`;
+  cartList.appendChild(totalDiv);
+}
+  </script>
+</body>
+</html>
