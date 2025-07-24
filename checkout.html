@@ -225,7 +225,7 @@
   <div id="popup" class="popup-success">
     <h3>Đặt hàng thành công!</h3>
     <p>Cảm ơn bạn đã mua hàng tại COS.</p>
-    <button onclick="closePopup()">Về trang chủ</button>
+    <button onclick="closePopup()">Xem đơn hàng</button>
   </div>
 
   <script>
@@ -262,12 +262,41 @@
 
     document.getElementById('checkout-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      localStorage.removeItem("cart");
+      const name = document.getElementById('name').value;
+const phone = document.getElementById('phone').value;
+const email = document.getElementById('email').value;
+const address = document.getElementById('address').value;
+const city = document.getElementById('city').value;
+const note = document.getElementById('note').value;
+const payment = document.querySelector('input[name="payment"]:checked').value;
+
+const order = {
+  id: Date.now(),
+  name,
+  phone,
+  email,
+  address,
+  city,
+  note,
+  payment,
+  cart,
+  total,
+  date: new Date().toLocaleString("vi-VN"),
+  status: "Đang xử lý"
+};
+
+const orders = JSON.parse(localStorage.getItem("orders")) || [];
+orders.push(order);
+localStorage.setItem("orders", JSON.stringify(orders));
+
+localStorage.removeItem("cart");
+document.getElementById('popup').style.display = 'block';
+
       document.getElementById('popup').style.display = 'block';
     });
 
     function closePopup() {
-      window.location.href = "/home.html";
+      window.location.href = "/orders.html";
     }
 
     const cartList = document.getElementById("cart-list");
@@ -302,6 +331,12 @@ if (cart.length === 0) {
   totalDiv.innerHTML = `Tổng cộng: <strong>${total.toLocaleString('vi-VN')} đ</strong>`;
   cartList.appendChild(totalDiv);
 }
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer-placeholder").innerHTML = html;
+      });
   </script>
+   <div id="footer-placeholder"></div>
 </body>
 </html>

@@ -191,74 +191,87 @@
       letter-spacing: 0.5px;
     }
 
-    /* FOOTER */
-    footer {
-      background: #111;
-      color: white;
-      padding: 40px 30px 20px;
-    }
+/* FOOTER */
+footer {
+  background: #111;
+  color: #fff;
+  padding: 50px 30px 30px;
+  font-family: Arial, sans-serif;
+}
 
-    .footer-logo {
-      font-size: 48px;
-      text-align: center;
-      margin-bottom: 10px;
-      letter-spacing: 4px;
-    }
+.footer-logo {
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+}
 
-    .footer-line {
-      border: none;
-      border-top: 3px solid #444;
-      margin: 20px auto 30px;
-      width: 95%;
-    }
+.footer-line {
+  border: none;
+  border-top: 2px solid #444;
+  margin: 20px auto 30px;
+  width: 90%;
+}
 
-    .footer-content {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-    .footer-col h4 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
+.footer-col h4 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #fff;
+}
 
-    .footer-col p {
-      font-size: 16px;
-      color: #ddd;
-      margin: 6px 0;
-    }
+.footer-col a {
+  display: block;
+  font-size: 15px;
+  color: #ccc;
+  text-decoration: none;
+  margin: 6px 0;
+  transition: color 0.3s;
+}
 
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      padding-top: 30px;
-      margin-top: 40px;
-      border-top: 1px solid #444;
-      font-size: 14px;
-      color: #ccc;
-      flex-wrap: wrap;
-      text-align: center;
-    }
+.footer-col a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
 
-    .footer-bottom p {
-      margin: 5px 15px;
-    }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  margin-top: 40px;
+  border-top: 1px solid #444;
+  font-size: 14px;
+  color: #ccc;
+  flex-wrap: wrap;
+  text-align: center;
+}
 
-    @media (max-width: 768px) {
-      .footer-content {
-        grid-template-columns: 1fr 1fr;
-      }
-      .footer-logo {
-        font-size: 36px;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
+.footer-bottom p {
+  margin: 5px 15px;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-logo {
+    font-size: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
 /* CSS PRODUCTPAGE */
     /* TOP NAV BAR giống home */
 .top-nav {
@@ -554,4 +567,42 @@
   min-width: 300px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   text-align: center;
+}
+/* Ẩn menu khi chưa bật */
+.dropdown-hidden {
+  display: none;
+}
+
+/* Dropdown container */
+.user-dropdown {
+  position: relative;
+}
+
+/* Menu thả xuống */
+#user-menu {
+  position: absolute;
+  right: 0;
+  top: 28px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 999;
+  min-width: 120px;
+  border-radius: 4px;
+}
+
+/* Link bên trong dropdown */
+#user-menu a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+#user-menu a:hover {
+  background-color: #f2f2f2;
+  color: #000;
 }

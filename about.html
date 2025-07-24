@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Về Chúng Tôi | COS</title>
+  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-left">
+        <a href="#">Women</a>
+        <a href="#"><b>Men</b></a>
+      </div>
+      <div class="logo">
+        <a href="home.html">COS</a>
+      </div>
+      <div class="nav-right">
+        <i class='bx bx-search' id="search-icon" style="font-size: 22px;"></i>
+
+        <!-- User dropdown -->
+        <div class="user-dropdown" style="position: relative;">
+          <i class='bx bx-user' id="user-icon" style="font-size: 22px; cursor: pointer;"></i>
+          <div id="user-menu" class="dropdown-hidden" style="
+              position: absolute;
+              right: 0;
+              top: 28px;
+              background-color: white;
+              border: 1px solid #ddd;
+              padding: 10px;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+              z-index: 999;
+            ">
+            <a href="login.html" id="login-link" style="display: block; margin-bottom: 5px;">Đăng nhập</a>
+            <a href="orders.html" id="orders-link" style="display: none; margin-bottom: 5px;">Đơn hàng</a>
+            <a href="#" id="logout-link" style="display: none;">Đăng xuất</a>
+          </div>  
+        </div>
+
+        <i class='bx bx-heart' style="font-size: 22px;"></i>
+        <a href="cart.html" class="cart-icon" style="position: relative; text-decoration: none;">
+          <i class='bx bx-shopping-bag' style="font-size: 22px; color: black;"></i>
+          <span class="cart-count" style="position: absolute; top: -6px; right: -10px; background-color: red; color: white; font-size: 12px; padding: 2px 6px; border-radius: 50%;">0</span>
+        </a>
+        <span class="lang">EN/VN</span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <main class="about-container">
+    <h1 class="about-title">VỀ CHÚNG TÔI</h1>
+    <img src="images/about.jpg" alt="Ảnh COS" class="about-image" />
+    <p class="about-description">
+      COS cung cấp một tủ đồ gồm trang phục may sẵn và phụ kiện với chất lượng vượt trội và thiết kế bền vững.  
+      Linh hồn sáng tạo của thương hiệu bắt nguồn từ sự kết nối sâu sắc với văn hóa hiện đại, các thành phố toàn cầu năng động và những phong trào thời trang hấp dẫn.  
+      Với trọng tâm là tay nghề thủ công, sự đổi mới và vật liệu cao cấp, các bộ sưu tập được tạo ra với sự tinh tế, kết hợp hài hòa giữa hiện đại và vượt thời gian.
+    </p>
+  </main>
+
+  <!-- Footer load bằng fetch -->
+  <script>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer-placeholder").innerHTML = html;
+      });
+  </script>
+  <div id="footer-placeholder"></div>
+
+</body>
+</html>

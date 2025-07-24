@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Đơn hàng của bạn | COS</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px 20px;
+      max-width: 1000px;
+      margin: auto;
+      background-color: #fdfdfd;
+      color: #333;
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+      font-weight: bold;
+      color: #000;
+    }
+    .order {
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 12px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .order-header div {
+      font-size: 14px;
+    }
+    .order-total {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .items {
+      margin-top: 10px;
+    }
+    .item {
+      display: flex;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .item img {
+      width: 80px;
+      height: auto;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .item-info p {
+      margin: 4px 0;
+    }
+    .empty-msg {
+      text-align: center;
+      margin-top: 60px;
+      font-size: 18px;
+      color: #777;
+    }
+    .navbar {
+  background-color: #fff;
+  padding: 16px 20px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: center; /* đưa nội dung ra giữa ngang */
+  align-items: center;     /* căn giữa dọc */
+}
+
+.navbar .brand a {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+.status {
+  font-weight: bold;
+}
+
+.status.đang-xử-lý {
+  color: green;
+}
+
+.status.đã-giao {
+  color: blue;
+}
+
+.status.đã-hủy {
+  color: red;
+}
+
+
+  </style>
+</head>
+<body>
+    <div class="navbar">
+    <div class="brand"><a href="/home.html">COS</a></div>
+  </div>
+
+  <h1>Đơn hàng của bạn</h1>
+  <div id="orders-container"></div>
+
+  <script>
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+    const container = document.getElementById("orders-container");
+
+    if (orders.length === 0) {
+      container.innerHTML = '<p class="empty-msg">Bạn chưa có đơn hàng nào.</p>';
+    } else {
+      orders.reverse().forEach(order => {
+        const div = document.createElement("div");
+        div.className = "order";
+
+        div.innerHTML = `
+          <div class="order-header">
+            <div><strong>Họ tên:</strong> ${order.name}</div>
+            <div><strong>Điện thoại:</strong> ${order.phone}</div>
+            <div><strong>Địa chỉ:</strong> ${order.address}, ${order.city}</div>
+            <div><strong>Ngày đặt:</strong> ${order.date}</div>
+            <div><strong>Thanh toán:</strong> ${order.payment === 'cod' ? 'COD' : 'Chuyển khoản'}</div>
+            <div><strong>Tình trạng:</strong> <span class="status ${order.status.replace(/\s+/g, '-').toLowerCase()}">${order.status}</span></div>
+
+          </div>
+          <div class="items">
+            ${order.cart.map(item => `
+              <div class="item">
+                <img src="${item.image}" alt="${item.name}" />
+                <div class="item-info">
+                  <p><strong>${item.name}</strong></p>
+                  <p>Giá: ${Number(item.price).toLocaleString('vi-VN')} đ</p>
+                  <p>Số lượng: ${item.quantity}</p>
+                  <p><em>Tạm tính: ${(Number(item.price) * item.quantity).toLocaleString('vi-VN')} đ</em></p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+          <p class="order-total">Tổng cộng: ${order.total.toLocaleString('vi-VN')} đ</p>
+        `;
+        container.appendChild(div);
+      });
+    }
+  </script>
+</body>
+</html>

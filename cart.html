@@ -243,19 +243,16 @@
     </div>
   </div>
 
-  <footer>
-    <div class="footer-logo">COS</div>
-    <hr class="footer-line" />
-    <div class="footer-content">
-      <div class="footer-col"><h4>The company</h4><p>About</p><p>Features</p><p>Design and Craft</p><p>Pinterest</p></div>
-      <div class="footer-col"><h4>Assistance</h4><p>Contact us</p><p>Payments</p><p>FAQ</p></div>
-      <div class="footer-col"><h4>Legal</h4><p>Privacy policy</p><p>Cookie notice</p><p>Cookie settings</p></div>
-      <div class="footer-col"><h4>Follow us</h4><p>Facebook</p><p>Instagram</p><p>Tiktok</p></div>
-    </div>
-    <div class="footer-bottom"><p>COS</p><p>SHIPPING TO > VIETNAM (ENGLISH)</p></div>
-  </footer>
 
   <script>
+  // Kiểm tra trạng thái đăng nhập
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+  if (!isLoggedIn || isLoggedIn !== "true") {
+    alert("Vui lòng đăng nhập để truy cập giỏ hàng.");
+    window.location.href = "login.html"; // Điều hướng về trang đăng nhập
+  }
+
     const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
     function formatCurrency(num) {
@@ -327,6 +324,13 @@
     }
 
     renderCart();
+     fetch("footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer-placeholder").innerHTML = html;
+    });
   </script>
+  <div id="footer-placeholder"></div>
+
 </body>
 </html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đăng ký - COS</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="login-container">
+    <!-- Left side - form -->
+    <div class="form-section">
+      <div class="logo">COS</div>
+      <div class="form-wrapper">
+        <h2>ĐĂNG KÝ</h2>
+        <form id="register-form">
+          <label for="name">HỌ VÀ TÊN</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">EMAIL</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="password">MẬT KHẨU</label>
+          <input type="password" id="password" name="password" required />
+
+          <label for="confirm-password">XÁC NHẬN MẬT KHẨU</label>
+          <input type="password" id="confirm-password" name="confirm-password" required />
+
+          <button type="submit" class="submit-btn">ĐĂNG KÝ</button>
+          <button type="button" class="register-btn" onclick="window.location.href='login.html'">ĐÃ CÓ TÀI KHOẢN?</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right side - image -->
+    <div class="image-section">
+      <img src="images/login-model.jpg" alt="COS model" />
+    </div>
+  </div>
+
+  <script src="register.js"></script>
+</body>
+</html>

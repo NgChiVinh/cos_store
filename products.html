@@ -9,28 +9,47 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-
-  <!-- Header -->
-  <header>
+<!-- Header -->
+  <header class="header">
     <nav class="navbar">
-      <div class="nav-left">
-        <a href="#">Women</a>
-        <a href="#"><b>Men</b></a>
-      </div>
-      <div class="logo">
-        <a href="home.html">COS</a>
-      </div>
-      <div class="nav-right">
-        <i class='bx bx-search' id="search-icon" style="font-size: 22px;"></i>
-        <i class='bx bx-user' style="font-size: 22px;"></i>
-        <i class='bx bx-heart' style="font-size: 22px;"></i>
-        <a href="cart.html" class="cart-icon" style="position: relative; text-decoration: none;">
-          <i class='bx bx-shopping-bag' style="font-size: 22px; color: black;"></i>
-          <span class="cart-count" style="position: absolute; top: -6px; right: -10px; background-color: red; color: white; font-size: 12px; padding: 2px 6px; border-radius: 50%;">0</span>
-        </a>
-        <span class="lang">EN/VN</span>
-      </div>
-    </nav>
+  <div class="nav-left">
+    <a href="#">Women</a>
+    <a href="#"><b>Men</b></a>
+  </div>
+  <div class="logo">
+    <a href="home.html">COS</a>
+  </div>
+  <div class="nav-right">
+    <i class='bx bx-search' id="search-icon" style="font-size: 22px;"></i>
+
+ <!-- User dropdown -->
+<div class="user-dropdown" style="position: relative;">
+  <i class='bx bx-user' id="user-icon" style="font-size: 22px; cursor: pointer;"></i>
+  <div id="user-menu" class="dropdown-hidden" style="
+      position: absolute;
+      right: 0;
+      top: 28px;
+      background-color: white;
+      border: 1px solid #ddd;
+      padding: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      z-index: 999;
+    ">
+    <a href="login.html" id="login-link" style="display: block; margin-bottom: 5px;">Đăng nhập</a>
+    <a href="orders.html" id="orders-link" style="display: none; margin-bottom: 5px;">Đơn hàng</a>
+    <a href="#" id="logout-link" style="display: none;">Đăng xuất</a>
+  </div>
+</div>
+
+    <i class='bx bx-heart' style="font-size: 22px;"></i>
+    <a href="cart.html" class="cart-icon" style="position: relative; text-decoration: none;">
+      <i class='bx bx-shopping-bag' style="font-size: 22px; color: black;"></i>
+      <span class="cart-count" style="position: absolute; top: -6px; right: -10px; background-color: red; color: white; font-size: 12px; padding: 2px 6px; border-radius: 50%;">0</span>
+    </a>
+    <span class="lang">EN/VN</span>
+  </div>
+</nav>
+  </header>
 
     <!-- Search Box -->
 <div class="search-box hidden">
@@ -45,7 +64,7 @@
       <a href="#" data-category="shirts">SHIRTS</a>
       <a href="#" data-category="trousers">TROUSERS</a>
     </nav>
-  </header>
+
 
   <!-- Breadcrumb -->
   <div class="breadcrumb">
@@ -59,7 +78,7 @@
 
 
     <!-- Mỗi product-card có data-category -->
-    <div class="product-card" data-category="new" data-name="Áo khoác da có nhiều túi" data-price="7290000" data-image="images/product01.jpg">
+    <div class="product-card" data-id="p1" data-category="new" data-name="Áo khoác da có nhiều túi" data-price="7290000" data-image="images/product01.jpg">
       <div class="image-container">
         <img src="images/product01.jpg" alt="Áo khoác da">
         <button class="add-to-cart-btn">Thêm vào giỏ</button>
@@ -68,34 +87,34 @@
       <p>7.290.000 VND</p>
     </div>
 
-    <div class="product-card" data-category="knitwear" data-name="Áo len cashmere" data-price="5290000" data-image="images/product02.jpg">
+    <div class="product-card" data-id="p2" data-category="knitwear" data-name="Áo Polo vải dệt kim mềm" data-price="5290000" data-image="images/product02.jpg">
       <div class="image-container">
-        <img src="images/knitwear02.jpg" alt="Áo len cashmere">
+        <img src="images/product02.jpg" alt="Áo len cashmere">
         <button class="add-to-cart-btn">Thêm vào giỏ</button>
       </div>
-      <h3>Áo len cashmere</h3>
+      <h3>Áo Polo vải dệt kim mềm</h3>
       <p>5.290.000 VND</p>
     </div>
 
-    <div class="product-card" data-category="shirts" data-name="Áo blazer" data-price="3490000" data-image="images/product03.jpg">
+    <div class="product-card" data-id="p3" data-category="shirts" data-name="Áo Sơ Mi" data-price="3490000" data-image="images/product03.jpg">
       <div class="image-container">
-        <img src="images/shirt01.jpg" alt="Áo blazer">
+        <img src="images/product03.jpg" alt="Áo Sơ Mi">
         <button class="add-to-cart-btn">Thêm vào giỏ</button>
       </div>
       <h3>Áo Sơ Mi</h3>
       <p>3.490.000 VND</p>
     </div>
 
-    <div class="product-card" data-category="shirts" data-name="Áo Sơ Mi" data-price="6990000" data-image="images/product10.jpg">
+    <div class="product-card" data-id="p4" data-category="shirts" data-name="Áo Sơ Mi" data-price="6990000" data-image="images/product04.jpg">
       <div class="image-container">
-        <img src="images/product10.jpg" alt="Áo sơ mi">
+        <img src="images/product04.jpg" alt="Áo sơ mi">
         <button class="add-to-cart-btn">Thêm vào giỏ</button>
       </div>
       <h3>Áo Sơ Mi</h3>
       <p>6.990.000 VND</p>
     </div>
 
-    <div class="product-card" data-category="knitwear" data-name="Áo Len" data-price="2990000" data-image="images/product05.jpg">
+    <div class="product-card" data-id="p5" data-category="knitwear" data-name="Áo Len" data-price="2990000" data-image="images/product05.jpg">
       <div class="image-container">
         <img src="images/product05.jpg" alt="Áo len">
         <button class="add-to-cart-btn">Thêm vào giỏ</button>
@@ -104,7 +123,7 @@
       <p>2.990.000 VND</p>
     </div>
 
-    <div class="product-card" data-category="trousers" data-name="Quần" data-price="4390000" data-image="images/product09.jpg">
+    <div class="product-card" data-id="p6" data-category="trousers" data-name="Quần" data-price="4390000" data-image="images/pant01.jpg">
       <div class="image-container">
         <img src="images/pant01.jpg" alt="Áo hoodie">
         <button class="add-to-cart-btn">Thêm vào giỏ</button>
@@ -113,7 +132,7 @@
       <p>4.390.000 VND</p>
     </div>
 
-    <div class="product-card" data-category="trousers" data-name="Quần" data-price="3590000" data-image="images/product07.jpg">
+    <div class="product-card" data-id="p7" data-category="trousers" data-name="Quần" data-price="3590000" data-image="images/pant02.jpg">
       <div class="image-container">
         <img src="images/pant02.jpg" alt="Blazer">
         <button class="add-to-cart-btn">Thêm vào giỏ</button>
@@ -122,7 +141,7 @@
       <p>3.590.000 VND</p>
     </div>
 
-    <div class="product-card" data-category="new" data-name="Áo Blazer Basic" data-price="1190000" data-image="images/product08.jpg">
+    <div class="product-card" data-id="p8" data-category="new" data-name="Áo Blazer Basic" data-price="1190000" data-image="images/product08.jpg">
       <div class="image-container">
         <img src="images/product08.jpg" alt="Áo basic">
         <button class="add-to-cart-btn">Thêm vào giỏ</button>
@@ -133,45 +152,9 @@
 
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-logo">COS</div>
-    <hr class="footer-line" />
-    <div class="footer-content">
-      <div class="footer-col">
-        <h4>The company</h4>
-        <p>About</p>
-        <p>Features</p>
-        <p>Design and Craft</p>
-        <p>Pinterest</p>
-      </div>
-      <div class="footer-col">
-        <h4>Assistance</h4>
-        <p>Contact us</p>
-        <p>Payments</p>
-        <p>FAQ</p>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <p>Privacy policy</p>
-        <p>Cookie notice</p>
-        <p>Cookie settings</p>
-      </div>
-      <div class="footer-col">
-        <h4>Follow us</h4>
-        <p>Facebook</p>
-        <p>Instagram</p>
-        <p>Tiktok</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>COS</p>
-      <p>SHIPPING TO > VIETNAM (ENGLISH)</p>
-    </div>
-  </footer>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener("DOMContentLoaded", function () {
     const cartCount = document.querySelector('.cart-count');
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const loginPopup = document.getElementById("login-popup");
@@ -179,23 +162,57 @@
 
     updateCartCount();
 
-    // Gắn sự kiện cho nút trong popup
+    // --- Dropdown và login/logout ---
+    const userIcon = document.getElementById("user-icon");
+    const userMenu = document.getElementById("user-menu");
+    const loginLink = document.getElementById("login-link");
+    const logoutLink = document.getElementById("logout-link");
+    const ordersLink = document.getElementById("orders-link");
+    const userLoggedIn = localStorage.getItem("loggedInUser");
+
+    if (userLoggedIn) {
+      loginLink && (loginLink.style.display = "none");
+      logoutLink && (logoutLink.style.display = "block");
+      ordersLink && (ordersLink.style.display = "block");
+    } else {
+      loginLink && (loginLink.style.display = "block");
+      logoutLink && (logoutLink.style.display = "none");
+      ordersLink && (ordersLink.style.display = "none");
+    }
+
+    if (userIcon && userMenu) {
+      userIcon.addEventListener("click", function (e) {
+        e.stopPropagation();
+        userMenu.classList.toggle("dropdown-hidden");
+      });
+
+      window.addEventListener("click", function (e) {
+        if (!e.target.closest('.user-dropdown')) {
+          userMenu.classList.add("dropdown-hidden");
+        }
+      });
+    }
+
+    logoutLink && logoutLink.addEventListener("click", function () {
+      localStorage.removeItem("loggedInUser");
+      window.location.reload();
+    });
+
+    // --- Nút đăng nhập trong popup ---
     if (loginBtn) {
       loginBtn.addEventListener("click", function () {
         window.location.href = "login.html";
       });
     }
 
-    // Thêm sản phẩm vào giỏ hàng
+    // --- Thêm sản phẩm vào giỏ hàng ---
     document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
       btn.addEventListener('click', function (event) {
-        event.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
+        event.stopPropagation();
 
         const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
         if (!isLoggedIn) {
-          if (loginPopup) {
-            loginPopup.classList.remove("hidden");
-          }
+          if (loginPopup) loginPopup.classList.remove("hidden");
           return;
         }
 
@@ -214,16 +231,15 @@
 
         localStorage.setItem('cart', JSON.stringify(cart));
         updateCartCount();
-        alert("Đã thêm vào giỏ hàng!");
       });
     });
 
     function updateCartCount() {
       const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-      cartCount.textContent = totalItems;
+      if (cartCount) cartCount.textContent = totalItems;
     }
 
-    // Lọc sản phẩm theo danh mục
+    // --- Lọc sản phẩm ---
     const menuLinks = document.querySelectorAll('.category-menu a');
     const productCards = document.querySelectorAll('.product-card');
 
@@ -238,32 +254,34 @@
       });
     });
 
-    // Tìm kiếm sản phẩm
+    // --- Tìm kiếm sản phẩm ---
     const searchIcon = document.querySelector('.bx-search');
     const searchBox = document.querySelector('.search-box');
     const searchInput = document.getElementById('search-input');
     const noResultsMessage = document.getElementById('no-results');
 
-    searchIcon.addEventListener('click', () => {
-      searchBox.classList.toggle('hidden');
-      searchInput.focus();
-    });
-
-    searchInput.addEventListener('input', () => {
-      const keyword = searchInput.value.trim().toLowerCase();
-      let hasResult = false;
-
-      productCards.forEach(card => {
-        const name = card.getAttribute('data-name').toLowerCase();
-        const isMatch = name.includes(keyword);
-        card.style.display = isMatch ? 'block' : 'none';
-        if (isMatch) hasResult = true;
+    if (searchIcon && searchBox && searchInput) {
+      searchIcon.addEventListener('click', () => {
+        searchBox.classList.toggle('hidden');
+        searchInput.focus();
       });
 
-      noResultsMessage.style.display = (!hasResult && keyword !== '') ? 'block' : 'none';
-    });
+      searchInput.addEventListener('input', () => {
+        const keyword = searchInput.value.trim().toLowerCase();
+        let hasResult = false;
 
-    // Đóng popup khi click ra ngoài nội dung popup
+        productCards.forEach(card => {
+          const name = card.getAttribute('data-name').toLowerCase();
+          const isMatch = name.includes(keyword);
+          card.style.display = isMatch ? 'block' : 'none';
+          if (isMatch) hasResult = true;
+        });
+
+        noResultsMessage.style.display = (!hasResult && keyword !== '') ? 'block' : 'none';
+      });
+    }
+
+    // --- Đóng popup đăng nhập ---
     document.addEventListener("click", function (event) {
       if (loginPopup && !loginPopup.classList.contains("hidden")) {
         const popupBox = loginPopup.querySelector(".popup-box");
@@ -273,7 +291,37 @@
       }
     });
   });
+
+  document.querySelectorAll('.product-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const name = card.getAttribute('data-name');
+    const price = card.getAttribute('data-price');
+    const image = card.getAttribute('data-image');
+
+    const productDetail = { name, price, image };
+    localStorage.setItem('productDetail', JSON.stringify(productDetail));
+    window.location.href = "product-detail.html";
+  });
+});
+//lấy id
+  document.querySelectorAll(".product-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const productId = card.dataset.id;
+    localStorage.setItem("selectedProductId", productId);
+    window.location.href = "product-detail.html";
+  });
+});
+
+
+  fetch("footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer-placeholder").innerHTML = html;
+    });
+    
+
 </script>
+<script src="product-list.js"></script>
 
 
 
@@ -284,5 +332,8 @@
       <button class="popup-btn">Đăng nhập</button>
     </div>
   </div>
+
+  <div id="footer-placeholder"></div>
+
 </body>
 </html>
