@@ -152,7 +152,7 @@
 
   </main>
 
-
+  <div id="footer-placeholder"></div>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const cartCount = document.querySelector('.cart-count');
@@ -311,20 +311,13 @@
     window.location.href = "product-detail.html";
   });
 });
-
-
   fetch("footer.html")
     .then(res => res.text())
     .then(html => {
       document.getElementById("footer-placeholder").innerHTML = html;
     });
-    
-
 </script>
 <script src="product-list.js"></script>
-
-
-
   <!-- Popup yêu cầu đăng nhập -->
   <div id="login-popup" class="popup-overlay hidden">
     <div class="popup-box">
@@ -332,8 +325,6 @@
       <button class="popup-btn">Đăng nhập</button>
     </div>
   </div>
-
-  <div id="footer-placeholder"></div>
 
 </body>
 </html>
